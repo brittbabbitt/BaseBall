@@ -9,7 +9,7 @@ public class PlayBall {
 
         Team t = new Team("Red Sox");
         Team t2 = new Team("White Sox");
-        Game game = new Game();
+        Game game = new Game(t, t2);
         game.playBall();
     }
 }
