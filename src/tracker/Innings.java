@@ -6,26 +6,43 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class Innings {
-    Team team;
+    Team teamBatting;
+    int runs;
     int inning;
     int outs;
-    int maxInnings = 9;
+
 
     public int getInning() {
         return inning;
     }
 
-
-    public void setInning(int inning) //throws Exception
-    {
-        if(inning < maxInnings)
-            this.inning = inning;
-        else{
-            maxInnings++;
-            //throw new Exception();
-        }
+    public void setTeamBatting(Team teamBatting) {
+        this.teamBatting = teamBatting;
     }
 
+    public Team getTeamBatting() {
+        return teamBatting;
+    }
+
+    public void setOuts(int outs) {
+        this.outs = outs;
+    }
+
+    public int getOuts() {
+        return outs;
+    }
+
+    public void setRuns(int runs) {
+        this.runs = runs;
+    }
+
+    public int getRuns() {
+        return runs;
+    }
+
+    public void setInning(int inning) {
+        this.inning = inning;
+    }
 
     public void batInning(Team team){
         do{
