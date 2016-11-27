@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class Innings {
-    Team teamBatting;
-    int runs;
-    int inning;
-    int outs;
+    private boolean topInning = true;
+    private Team teamBatting;
+    private int runs;
+    private int inning;
+    private int outs;
 
 
     public int getInning() {
@@ -50,6 +51,14 @@ public class Innings {
         }while(outs >= 3);
         //reset outs for next inning
         outs = 0;
+    }
+
+    public void setTopInning(boolean b){
+        this.topInning = b;
+    }
+
+    public boolean isTopInning() {
+        return topInning;
     }
 
 }
