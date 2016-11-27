@@ -12,9 +12,9 @@ public class Team {
     private Player batting;
     private Player thirdAtBat;
     private Player nextAtBat;
-    private int playerID;
+    private boolean home = true;
 
-    private ArrayList<Integer> teamRuns = new ArrayList<Integer>();
+    private int teamRuns = 0;
 
     private int rosterCount = 0;
     private int maxPlayers = 9;
@@ -114,19 +114,11 @@ public class Team {
     public Player getNextAtBat(){ return nextAtBat; }
     public Player get3rdAtBat(){ return thirdAtBat; }
 
-    public ArrayList<Integer> getTeamRuns() { return teamRuns; }
+    public int getTeamRuns() { return teamRuns; }
 
-    public void setTeamRuns(int teamRuns) { this.teamRuns.add(teamRuns); }
+    public void setTeamRuns(int teamRuns) { this.teamRuns+=teamRuns; }
 
     public void startBatting(){
         //TODO: set player to bat and have stats
-    }
-
-    public int totalTeamRuns(){
-        int runs = 0;
-        for (int r: teamRuns) {
-            runs+=r;
-        }
-        return runs;
     }
 }
