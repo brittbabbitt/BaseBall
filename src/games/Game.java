@@ -13,8 +13,6 @@ public class Game {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    private Team batting;
-
     public boolean playBall(){
         Field ballField = new Field();
         this.start = true;
@@ -23,11 +21,6 @@ public class Game {
 
         return true;
     }
-
-    public void switchSides(Team batting){
-        this.batting = batting;
-    }
-
 
     public boolean endGame(){
         //TODO: check if game is tied - IF TIED add an inning and continue playing

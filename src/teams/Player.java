@@ -26,8 +26,8 @@ public class Player {
 
     public int getPlayerID() { return playerID; }
 
-    public int hit(){
-        int i = 0;
+    public int hit(int i){
+        i = 0;
         //TODO: logic for hitting Math.random()
         return i;
     }
