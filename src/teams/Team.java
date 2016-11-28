@@ -19,10 +19,11 @@ public class Team {
 
     //--Batting Data--
     private int rosterCount = 0;
-
     private Player batting;
-    private Player thirdAtBat;
-    private Player nextAtBat;
+
+    //--Runners Data--
+    private byte runnersOnBase = 0;
+    private byte runnerAtHome = 1;
 
     //creates a team with a name and a batting line up
     //@param team name
@@ -69,7 +70,7 @@ public class Team {
     }
 
     //printing a list of Players
-    public void printTeam(){
+    public void printPlayers(){
         if(!players.isEmpty()){
             for (Player p: players) {
                 System.out.println("Player Name:" + p.getPlayerName());
@@ -88,14 +89,17 @@ public class Team {
     public int getTeamRuns() { return teamRuns; }
     //sets team runs
     public void setTeamRuns(int teamRuns) { this.teamRuns+=teamRuns; }
-
+    //add runs
+    public void addTeamRuns(){
+        this.teamRuns++;
+    }
     //--Players on Base--
 
     //--Team Bats--
     public void bats(){
-        //TODO: set while condition
 
-           //System.out.println(p.hits());
+        int hitOut = batting.hits();
+
     }
 
 
@@ -104,14 +108,10 @@ public class Team {
     public void setBattingLineUp(){
         //check if Array out of bounds...reset roster count to 0
         batting(players.get(rosterCount));
-        setNextAtBat(players.get(rosterCount+1));
-        set3rdAtBat(players.get(rosterCount+2));
     }
 
     public void printLineUp(){
         System.out.println("Batting: " + getBatter().getPlayerName());
-        System.out.println("Next Batter: " + getNextAtBat().getPlayerName());
-        System.out.println("3rd at Bat: " + get3rdAtBat().getPlayerName() + "\n");
     }
 
     //keeps count of the line up for Players in the line up
@@ -126,15 +126,7 @@ public class Team {
 
     //sets the player that is batting
     public void batting(Player batting){ this.batting = batting; }
-    //set a player to 'next at bat' - next in line to bat
-    public void setNextAtBat(Player nextAtBat) {
-        this.nextAtBat = nextAtBat;
-    }
-    //set the next player to 3rd in line to bat
-    public void set3rdAtBat(Player thirdAtBat){ this.thirdAtBat = thirdAtBat; }
 
     //getters for batting line up setters
     public Player getBatter(){ return batting; }
-    public Player getNextAtBat(){ return nextAtBat; }
-    public Player get3rdAtBat(){ return thirdAtBat; }
 }
