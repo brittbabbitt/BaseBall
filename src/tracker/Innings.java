@@ -47,7 +47,7 @@ public class Innings {
 
     public void batInning(Team team){
         do{
-            team.startBatting();
+            team.bats();
         }while(outs >= 3);
         //reset outs for next inning
         outs = 0;

@@ -26,9 +26,20 @@ public class Player {
 
     public int getPlayerID() { return playerID; }
 
-    public int hit(int i){
-        i = 0;
-        //TODO: logic for hitting Math.random()
-        return i;
+    public int hits(){
+        float p = (float)Math.random()*100;
+        int pitch = (int) p;
+
+        if(pitch < 70){
+            return 0;
+        }else if(pitch >= 70 && pitch < 87){
+            return 1;
+        }else if(pitch >= 87 && pitch < 94){
+            return 2;
+        }else if(pitch >= 94 && pitch < 98){
+            return 4;
+        }else{
+            return 3;
+        }
     }
 }

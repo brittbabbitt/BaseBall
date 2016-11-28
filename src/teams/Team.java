@@ -7,17 +7,22 @@ import java.util.Arrays;
  * Description: This class is used to keep records of teams
  */
 public class Team {
+    //--Team Data--
     private String teamName;
+    private boolean home = true;
+    private int teamRuns = 0;
+    private int outs = 0;
+
+    //--Player Lists--
     private ArrayList<Player> players = new ArrayList<Player>();
+    private int maxPlayers = 9;
+
+    //--Batting Data--
+    private int rosterCount = 0;
+
     private Player batting;
     private Player thirdAtBat;
     private Player nextAtBat;
-    private boolean home = true;
-
-    private int teamRuns = 0;
-
-    private int rosterCount = 0;
-    private int maxPlayers = 9;
 
     //creates a team with a name and a batting line up
     //@param team name
@@ -74,11 +79,30 @@ public class Team {
         }
     }
 
-    //--GAME ACTIONS
+    //---GAME ACTIONS---
 
     //--Batting
+
+    //--Tracking Runs---
+    //gets team runs
+    public int getTeamRuns() { return teamRuns; }
+    //sets team runs
+    public void setTeamRuns(int teamRuns) { this.teamRuns+=teamRuns; }
+
+    //--Players on Base--
+
+    //--Team Bats--
+    public void bats(){
+        //TODO: set while condition
+
+           //System.out.println(p.hits());
+    }
+
+
+    //---The Line Up---
     //sets the batting line-up
     public void setBattingLineUp(){
+        //check if Array out of bounds...reset roster count to 0
         batting(players.get(rosterCount));
         setNextAtBat(players.get(rosterCount+1));
         set3rdAtBat(players.get(rosterCount+2));
@@ -113,12 +137,4 @@ public class Team {
     public Player getBatter(){ return batting; }
     public Player getNextAtBat(){ return nextAtBat; }
     public Player get3rdAtBat(){ return thirdAtBat; }
-
-    public int getTeamRuns() { return teamRuns; }
-
-    public void setTeamRuns(int teamRuns) { this.teamRuns+=teamRuns; }
-
-    public void startBatting(){
-        //TODO: set player to bat and have stats
-    }
 }
