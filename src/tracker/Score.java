@@ -6,14 +6,30 @@ import java.util.ArrayList;
  * Description: this class keeps track of the game time and score
  */
 public class Score {
-    private int maxInnings = 9;
-    private ArrayList <Innings> score = new ArrayList<Innings>();
+    private int homeScore = 0;
+    private int visitorScore = 0;
 
-    public void setScore(Innings inning) {
-        this.score.add(inning);
+    public void setHomeScore(int score) {
+        this.homeScore = score;
     }
 
-    public ArrayList<Innings> getScore() {
-        return score;
+    public int getHomeScore() {
+        return homeScore;
+    }
+
+    public void setVisitorScore(int score){
+        this.visitorScore = score;
+    }
+
+    public int getVisitorScore(){
+        return visitorScore;
+    }
+
+    public void addRunHome(){
+        homeScore++;
+    }
+
+    public void addRunVisitor(){
+        visitorScore++;
     }
 }
