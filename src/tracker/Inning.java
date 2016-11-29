@@ -35,6 +35,8 @@ public class Inning {
         return runs;
     }
 
+    public void addRuns() { runs++; }
+
     public void batInning(Team team){
         do{
             team.bats();

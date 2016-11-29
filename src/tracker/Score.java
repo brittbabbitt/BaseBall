@@ -25,11 +25,11 @@ public class Score {
         return visitorScore;
     }
 
-    public void addRunHome(){
-        homeScore++;
+    public void addRunsToHome(int score){
+        homeScore = score;
     }
 
-    public void addRunVisitor(){
-        visitorScore++;
+    public void addRunsToVisitor(int score){
+        visitorScore = score;
     }
 }
