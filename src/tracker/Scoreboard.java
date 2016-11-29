@@ -6,14 +6,14 @@ public class Scoreboard {
     private ArrayList <Score> scoreboard;
     private int maxInnings = 9;
     private int inning = 0;
-    boolean top = true;
+    private boolean top = true;
 
 
-    public int getInnings() {
+    public int getInning() {
         return inning;
     }
 
-    public void addInning() { inning ++; }
+    public void nextInning() { inning ++; }
 
     public void resetInnings() { this.inning = 0; }
 
@@ -27,9 +27,16 @@ public class Scoreboard {
 
     public void addScore(Score score){
         if(inning < maxInnings)
-            scoreboard.add(score);
+            this.scoreboard.add(score);
         else
             System.out.println("Error: innings went over max.");
     }
+
+    public void lightUp(){
+        this.inning = 0;
+        this.top = true;
+    }
+
+    public ArrayList<Score> getScoreboard(){ return scoreboard; }
 
 }
