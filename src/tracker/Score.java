@@ -3,7 +3,8 @@ package tracker;
 import java.util.ArrayList;
 
 /**
- * Description: this class keeps track of the game time and score
+ * Description: this class wraps the home and visitor score in a container
+ * to add to the scoreboard
  */
 public class Score {
     private int homeScore = 0;
