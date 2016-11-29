@@ -10,8 +10,6 @@ public class Team {
     //--Team Data--
     private String teamName;
     private boolean home = true;
-    private int teamRuns = 0;
-    private int outs = 0;
 
     //--Player Lists--
     private ArrayList<Player> players = new ArrayList<Player>();
@@ -20,10 +18,6 @@ public class Team {
     //--Batting Data--
     private int rosterCount = 0;
     private Player batting;
-
-    //--Runners Data--
-    private byte runnersOnBase = 0;
-    private byte runnerAtHome = 1;
 
     //creates a team with a name and a batting line up
     //@param team name
@@ -84,24 +78,10 @@ public class Team {
 
     //--Batting
 
-    //--Tracking Runs---
-    //gets team runs
-    public int getTeamRuns() { return teamRuns; }
-    //sets team runs
-    public void setTeamRuns(int teamRuns) { this.teamRuns+=teamRuns; }
-    //add runs
-    public void addTeamRuns(){
-        this.teamRuns++;
-    }
-    //--Players on Base--
-
     //--Team Bats--
-    public void bats(){
-
-        int hitOut = batting.hits();
-
+    public int bats(){
+        return batting.hits();
     }
-
 
     //---The Line Up---
     //sets the batting line-up
