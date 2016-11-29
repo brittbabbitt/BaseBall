@@ -5,17 +5,11 @@ import teams.Team;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class Innings {
-    private boolean topInning = true;
+public class Inning {
     private Team teamBatting;
     private int runs;
-    private int inning;
     private int outs;
-
-
-    public int getInning() {
-        return inning;
-    }
+    private final int maxOuts = 3;
 
     public void setTeamBatting(Team teamBatting) {
         this.teamBatting = teamBatting;
@@ -41,24 +35,12 @@ public class Innings {
         return runs;
     }
 
-    public void setInning(int inning) {
-        this.inning = inning;
-    }
-
     public void batInning(Team team){
         do{
             team.bats();
-        }while(outs >= 3);
+        }while(outs >= maxOuts);
         //reset outs for next inning
         outs = 0;
-    }
-
-    public void setTopInning(boolean b){
-        this.topInning = b;
-    }
-
-    public boolean isTopInning() {
-        return topInning;
     }
 
 }
