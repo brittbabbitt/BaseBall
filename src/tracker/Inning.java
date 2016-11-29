@@ -21,7 +21,7 @@ public class Inning {
         return teamBatting;
     }
 
-    public void addOuts(int outs) {
+    public void addOuts() {
         this.outs++;
     }
 
@@ -82,7 +82,7 @@ public class Inning {
     //@param: int # of bases to advance runner
     public void advanceRunners(int adv){
         if(adv == 0){
-            outs++;
+            addOuts();
             return;
         }
         if(totalOnBase() != 0){
