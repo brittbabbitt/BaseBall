@@ -30,14 +30,14 @@ public class InningTest {
 
     @Test
     public void homeRun_True() throws Exception {
-        inningTest.advanceRunners(1);
+        inningTest.advanceRunners(1);//single
         inningTest.homeRun();
         assertEquals(2,2);
     }
 
     @Test
     public void homeRun_False() throws Exception {
-        inningTest.advanceRunners(1);
+        inningTest.advanceRunners(1);//single
         inningTest.homeRun();
         assertNotEquals(2,3);
     }
@@ -49,14 +49,14 @@ public class InningTest {
 
     @Test
     public void advanceRunners_True() throws Exception {
-        inningTest.advanceRunners(3);
+        inningTest.advanceRunners(3); //triple
         int i = inningTest.totalOnBase();
         assertEquals(3,i);
     }
 
     @Test
     public void advanceRunners_False() throws Exception {
-        inningTest.advanceRunners(2);
+        inningTest.advanceRunners(2); //double
         int i = inningTest.totalOnBase();
         assertNotEquals(2,3);
     }

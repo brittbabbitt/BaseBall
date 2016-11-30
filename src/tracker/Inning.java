@@ -67,7 +67,9 @@ public class Inning {
         addRun();
     }
 
-    //returns the sum of the base count
+    //returns the sum of the base #'s from total on bases
+    //used to compare if total on base will advance to a run
+    //implementation example in advanceRunners()
     public int totalOnBase(){
         int sum = 0;
         for (Integer b : bases) {
@@ -77,7 +79,11 @@ public class Inning {
     }
 
     //advances runners if hit is made and adds runs to the team if granted
-    //@param: int # of bases to advance runner
+    //@param: # of bases to advance runner
+    //int adv represents:
+    // 1 - single
+    // 2 - double
+    // 3 - triple
     public void advanceRunners(int adv){
         if(adv == 0){
             addOuts();
