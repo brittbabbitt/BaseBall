@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Team {
     //--Team Data--
     private String teamName;
-    private boolean home = true;
+    private boolean isHome = true;
 
     //--Player Lists--
     private ArrayList<Player> players = new ArrayList<Player>();
@@ -27,18 +27,28 @@ public class Team {
         setBattingLineUp();
     }
 
-    //--TEAM NAME
-    //get Team name
+    //getters and setters
+    //--TEAM
+    //getters: teamName, isHome
+    //setters: teamName, isHome
     public String getTeamName() {
         return teamName;
     }
 
-    //set Team name
     public void setTeamName(String teamName) {
         this.teamName = teamName;
     }
 
-    //--PLAYERS ON A TEAM
+    public void setHome(boolean home) {
+        isHome = home;
+    }
+    public boolean checkHome(){
+        return isHome;
+    }
+
+    //--PLAYERS
+    //getters:
+    //setters:
     //get a list of all players on the team
     public ArrayList<Player> getTeamPlayers() {
         if(players.isEmpty()){
@@ -86,7 +96,6 @@ public class Team {
     //---The Line Up---
     //sets the batting line-up
     public void setBattingLineUp(){
-        //check if Array out of bounds...reset roster count to 0
         batting(players.get(rosterCount));
     }
 

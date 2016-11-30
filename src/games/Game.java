@@ -12,12 +12,24 @@ public class Game {
     private boolean start = false;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    Team team1; // home team
+    Team team2; // visitors team
+
+
+
+
+    public void flipCoin(Team team1, Team team2){
+        int rand = (int)(Math.random()*100);
+        if(rand > 50){
+            setHome(team1);
+            team1.setHome(true);
+        }else{
+            setVisitors(team2);
+            team2.setHome(false);
+        }
+    }
 
     public boolean playBall(){
-        Field ballField = new Field();
-        this.start = true;
-        this.startTime = LocalDateTime.now();
-
 
         return true;
     }
@@ -29,6 +41,23 @@ public class Game {
         return true;
     }
 
+    //getters and setters
+    //getters: visitors team, home team
+    //setters: visitors team, home team
+    public Team getVisitors() {
+        return team2;
+    }
 
+    public void setVisitors(Team visitors) {
+        this.team2 = visitors;
+    }
+
+    public Team getHome() {
+        return team1;
+    }
+
+    public void setHome(Team home) {
+        this.team1 = home;
+    }
 
 }
