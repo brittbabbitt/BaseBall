@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Inning {
     private Team teamBatting;
     private int runs;
-    private int outs;
+    private int outs=0;
     private final int maxOuts = 3;
     private ArrayList <Integer> bases = new ArrayList <Integer>();
 
@@ -16,14 +16,14 @@ public class Inning {
     public void batInning(){
         do{
             advanceRunners(teamBatting.bats());
-        }while(outs <= maxOuts);
+        }while(outs < maxOuts);
         outs = 0;
     }
 
     //adding run(s)
     public void addRun() { runs++; }
 
-    public void addRuns(Integer runs){
+    public void addRuns(int runs){
         this.runs+=runs;
     }
 
@@ -40,19 +40,14 @@ public class Inning {
 
     //when player hits a triple,
     //runs are counted for those still on base
-    public void tripple(){
-        for (Integer i: bases) {
-            addRuns(i);
-        }
+    public void triple(){
+        addRuns(bases.size());
         bases.clear();
         bases.add(3);
     }
     public void homeRun(){
-        for (Integer i: bases) {
-            addRuns(i);
-        }
+        addRuns(bases.size()+1);
         bases.clear();
-        addRun();
     }
 
     //advances runners if hit is made and adds runs to the team if granted
@@ -67,12 +62,13 @@ public class Inning {
             return;
         }
         if(totalOnBase() != 0){
-            int onBase = totalOnBase();
             if(adv == 3){
-                tripple();
-            }else if(adv == 2 && onBase >= 2){
+                triple();
+
+                //TODO: refactor double...write test
+            }else if(adv == 2 && totalOnBase() >= 2){
                 if (bases.size() == 1){
-                    addRun();
+                    addRuns(1);
                     bases.clear();
                 }else if (bases.size() >= 2){
                     addRuns(2);
@@ -80,15 +76,15 @@ public class Inning {
                     bases.remove(1);
                 }
                 bases.add(adv);
-            }else if(adv == 1 && onBase >= 3) {
-                addRun();
+            }else if(adv == 1 && totalOnBase() == 3) {
+                addRuns(1);
                 bases.remove(0);
                 bases.add(adv);
             }
         }else if(adv != 4){
             bases.add(adv);
         }else{
-                homeRun();
+            homeRun();
         }
 
     }

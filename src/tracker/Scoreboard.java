@@ -29,7 +29,7 @@ public class Scoreboard {
             home.printTeamName();
             runs = startBattingInning(home);
             scoreblock.setHomeScore(runs);
-            System.out.println("Runs: "+ runs);
+            System.out.println("Runs: "+ runs + "\n");
             addScore(scoreblock);
 
             totalHome+=runs;
