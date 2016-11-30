@@ -14,8 +14,8 @@ public class Game {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     Scoreboard scoreboard;
-
-
+    Team home;
+    Team visitors;
 
     //chooses who is home and who is visitors
     //param: 2 teams
@@ -23,13 +23,24 @@ public class Game {
         int rand = (int)(Math.random()*100);
         if(rand > 50){
             team1.setHome(true);
-        }else{
             team2.setHome(false);
+            home = team1;
+            visitors = team2;
+        }else{
+            team1.setHome(false);
+            team2.setHome(true);
+            home = team2;
+            visitors = team1;
         }
     }
 
     public boolean playBall(){
-
+        Team team1 = new Team("Reds");
+        Team team2 = new Team("Soxs");
+        flipCoin(team1, team2);
+        scoreboard = new Scoreboard();
+        scoreboard.startGame(visitors, home);
+        announceWinner(scoreboard);
         return true;
     }
 
@@ -38,6 +49,12 @@ public class Game {
         this.start = false;
         this.endTime = LocalDateTime.now();
         return true;
+    }
+
+    public void announceWinner(Scoreboard scoreboard){
+        System.out.println(home.getTeamName()+" : "+ scoreboard.getTotalHome());
+        System.out.println(visitors.getTeamName()+" : "+ scoreboard.getTotalVisitors());
+
     }
 
     //getters and setters

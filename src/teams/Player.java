@@ -1,6 +1,6 @@
 package teams;
 
-import names.NameGen;
+import util.NameGen;
 
 /**
  * Description: This class is used to keep records of players

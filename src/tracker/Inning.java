@@ -11,36 +11,6 @@ public class Inning {
     private final int maxOuts = 3;
     private ArrayList <Integer> bases = new ArrayList <Integer>();
 
-    public void setTeamBatting(Team teamBatting) {
-        this.teamBatting = teamBatting;
-    }
-
-    public Team getTeamBatting() {
-        return teamBatting;
-    }
-
-    public void addOuts() {
-        this.outs++;
-    }
-
-    public int getOuts() {
-        return outs;
-    }
-
-    public void setRuns(int runs) {
-        this.runs = runs;
-    }
-
-    public int getRuns() {
-        return runs;
-    }
-
-    public void addRun() { runs++; }
-
-    public void addRuns(Integer runs){
-        this.runs+=runs;
-    }
-
     //Team batting starts to bat until the inning is over
     //outs are reset at the end of the team's turn
     public void batInning(){
@@ -48,6 +18,24 @@ public class Inning {
             advanceRunners(teamBatting.bats());
         }while(outs <= maxOuts);
         outs = 0;
+    }
+
+    //adding run(s)
+    public void addRun() { runs++; }
+
+    public void addRuns(Integer runs){
+        this.runs+=runs;
+    }
+
+    //returns the sum of the base #'s from total on bases
+    //used to compare if total on base will advance to a run
+    //implementation example in advanceRunners()
+    public int totalOnBase(){
+        int sum = 0;
+        for (Integer b : bases) {
+            sum+=b;
+        }
+        return sum;
     }
 
     //when player hits a triple,
@@ -65,17 +53,6 @@ public class Inning {
         }
         bases.clear();
         addRun();
-    }
-
-    //returns the sum of the base #'s from total on bases
-    //used to compare if total on base will advance to a run
-    //implementation example in advanceRunners()
-    public int totalOnBase(){
-        int sum = 0;
-        for (Integer b : bases) {
-            sum+=b;
-        }
-        return sum;
     }
 
     //advances runners if hit is made and adds runs to the team if granted
@@ -114,6 +91,34 @@ public class Inning {
                 homeRun();
         }
 
+    }
+
+    //getters and setters
+    //getters: teamBatting, outs, runs
+    //setters: teamBatting, outs, runs
+
+    public void setTeamBatting(Team teamBatting) {
+        this.teamBatting = teamBatting;
+    }
+
+    public Team getTeamBatting() {
+        return teamBatting;
+    }
+
+    public void addOuts() {
+        this.outs++;
+    }
+
+    public int getOuts() {
+        return outs;
+    }
+
+    public void setRuns(int runs) {
+        this.runs = runs;
+    }
+
+    public int getRuns() {
+        return runs;
     }
 
 }

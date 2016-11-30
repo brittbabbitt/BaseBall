@@ -25,12 +25,4 @@ public class Score {
     public int getVisitorScore(){
         return visitorScore;
     }
-
-    public void addRunsToHome(int score){
-        homeScore = score;
-    }
-
-    public void addRunsToVisitor(int score){
-        visitorScore = score;
-    }
 }

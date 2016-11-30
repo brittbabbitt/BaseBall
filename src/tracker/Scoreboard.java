@@ -5,24 +5,57 @@ import teams.Team;
 import java.util.ArrayList;
 
 public class Scoreboard {
-    private ArrayList <Score> scoreboard;
+    private ArrayList <Score> scoreboard = new ArrayList<>();
     private int maxInnings = 9;
     private int inning = 0;
     private boolean top = true;
-    Team home;
-    Team visitors;
+    private int totalHome;
+    private int totalVisitors;
 
+    public void startGame(Team visitors, Team home){
+        while (inning < maxInnings){
+            Score scoreblock = new Score();
+            inning++;
+
+            //visitors batting
+            int runs = startBattingInning(visitors);
+            scoreblock.setVisitorScore(runs);
+            totalVisitors+=runs;
+
+            //home batting
+            runs = startBattingInning(home);
+            scoreblock.setHomeScore(runs);
+            addScore(scoreblock);
+
+            totalHome+=runs;
+            if(inning >= maxInnings && totalVisitors == totalHome ){
+                maxInnings++;
+            }
+        }
+
+        printScoreboard();
+    }
+
+    public int startBattingInning(Team batting){
+        Inning inning = new Inning();
+        inning.setTeamBatting(batting);
+        inning.batInning();
+
+        int runs = inning.getRuns();
+        return runs;
+    }
 
     public void addScore(Score score){
-        if(inning < maxInnings)
             this.scoreboard.add(score);
-        else
-            System.out.println("Error: innings went over max.");
     }
 
     public void lightUp(){
         this.inning = 0;
         this.top = true;
+    }
+
+    public void playInning(Team home, Team visitors){
+
     }
 
     //adding next inning
@@ -31,36 +64,48 @@ public class Scoreboard {
     //resetting innings for a new game
     public void resetInnings() { this.inning = 0; }
 
+    //printing
+    //-inning-
+    public void printInningNumber(int i){
+        System.out.println("Inning: "+ i);
+    }
+    //-scoreboard-
+    public void printScoreboard(){
+
+        System.out.print(" | Innning | \t| ");
+        for (int i = 0; i < scoreboard.size(); i++) {
+            System.out.print( i+1 +" | ");
+        }
+        System.out.print("R |");
+
+        System.out.print("\n | Home | \t\t| ");
+        for (Score s: scoreboard) {
+            System.out.print(s.getHomeScore() +" | ");
+        }
+        System.out.print(totalHome + " |");
+
+        System.out.print("\n | Visitors | \t| ");
+        for (Score s: scoreboard) {
+            System.out.print(s.getVisitorScore() +" | ");
+        }
+        System.out.println(totalVisitors + " |");
+
+    }
+
+
+
     //getters and setters
-    //getters: scoreboard, inning, top, home, visitors
-    //setters: top, home, visitors
+    //getters: scoreboard, inning, totalHome, totalVisitors
     public ArrayList<Score> getScoreboard(){ return scoreboard; }
 
-    public void setHomeTeam(Team home) {
-        this.home = home;
+    public Score getInning(int i) {
+        return scoreboard.get(i);
     }
 
-    public Team getHomeTeam() {
-        return home;
+    public int getTotalHome() {
+        return totalHome;
     }
-
-    public void setVisitorsTeam(Team visitors) {
-        this.visitors = visitors;
-    }
-
-    public Team getVisitorsTeam() {
-        return visitors;
-    }
-
-    public int getInning() {
-        return inning;
-    }
-
-    public void setTopInning(boolean b){
-        this.top = b;
-    }
-
-    public boolean isTopInning() {
-        return top;
+    public int getTotalVisitors(){
+        return totalVisitors;
     }
 }
