@@ -3,8 +3,6 @@ package tracker;
 import teams.Team;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.concurrent.ExecutionException;
 
 public class Inning {
     private Team teamBatting;
@@ -45,9 +43,9 @@ public class Inning {
 
     //Team batting starts to bat until the inning is over
     //outs are reset at the end of the team's turn
-    public void batInning(Team team){
+    public void batInning(){
         do{
-            advanceRunners(team.bats());
+            advanceRunners(teamBatting.bats());
         }while(outs <= maxOuts);
         outs = 0;
     }
@@ -92,7 +90,7 @@ public class Inning {
             }else if(adv == 2 && onBase >= 2){
                 if (bases.size() == 1){
                     addRun();
-                    bases.remove(0);
+                    bases.clear();
                 }else if (bases.size() >= 2){
                     addRuns(2);
                     bases.remove(0);
