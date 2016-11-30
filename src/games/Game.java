@@ -1,6 +1,7 @@
 package games;
 
 import teams.Team;
+import tracker.Scoreboard;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,19 +13,17 @@ public class Game {
     private boolean start = false;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    Team team1; // home team
-    Team team2; // visitors team
+    Scoreboard scoreboard;
 
 
 
-
+    //chooses who is home and who is visitors
+    //param: 2 teams
     public void flipCoin(Team team1, Team team2){
         int rand = (int)(Math.random()*100);
         if(rand > 50){
-            setHome(team1);
             team1.setHome(true);
         }else{
-            setVisitors(team2);
             team2.setHome(false);
         }
     }
@@ -42,22 +41,14 @@ public class Game {
     }
 
     //getters and setters
-    //getters: visitors team, home team
-    //setters: visitors team, home team
-    public Team getVisitors() {
-        return team2;
+    //getters: scoreboard
+    //setters: scoreboard
+
+    public Scoreboard getScoreboard() {
+        return scoreboard;
     }
 
-    public void setVisitors(Team visitors) {
-        this.team2 = visitors;
+    public void setScoreboard(Scoreboard scoreboard) {
+        this.scoreboard = scoreboard;
     }
-
-    public Team getHome() {
-        return team1;
-    }
-
-    public void setHome(Team home) {
-        this.team1 = home;
-    }
-
 }

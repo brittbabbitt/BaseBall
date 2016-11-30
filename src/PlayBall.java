@@ -8,7 +8,7 @@ public class PlayBall {
 
     public static void main(String[] args) {
 
-        Team t = new Team("Hammers");
-        t.bats();
+        Game g = new Game();
+
     }
 }

@@ -26,6 +26,13 @@ public class Player {
 
     public int getPlayerID() { return playerID; }
 
+    //randomizes a pitch and returns the type of hit
+    //a player gets
+    //@return:
+    // 0 - out
+    // 1 - single
+    // 2 - double
+    // 3 - triple
     public int hits(){
         float p = (float)Math.random()*100;
         int pitch = (int) p;
