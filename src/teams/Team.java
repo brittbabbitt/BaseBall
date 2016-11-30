@@ -13,7 +13,6 @@ public class Team {
 
     //--Player Lists--
     private ArrayList<Player> players = new ArrayList<Player>();
-    private int maxPlayers = 9;
 
     //--Batting Data--
     private int rosterCount = 0;
@@ -24,7 +23,7 @@ public class Team {
     public Team(String teamName){
         this.teamName = teamName;
         createTeam();
-        setBattingLineUp();
+        setBattingLineUp(rosterCount);
     }
 
     //getters and setters
@@ -60,6 +59,7 @@ public class Team {
     //create a list of players for a team
     //@limit maxPlayers are 9 on the field
     private void createTeam(){
+        int maxPlayers = 9;
         for(int i = 0; i < maxPlayers; i++){
             players.add(addPlayer(i));
         }
@@ -90,13 +90,20 @@ public class Team {
 
     //--Team Bats--
     public int bats(){
-        return batting.hits();
+        int hit = batting.hits();
+        increaseLineUp();
+        return hit;
     }
 
     //---The Line Up---
     //sets the batting line-up
-    public void setBattingLineUp(){
-        batting(players.get(rosterCount));
+    public void setBattingLineUp(int id){
+        if(id < players.size())
+            setBatter(players.get(id));
+        else{
+            rosterCount = 0;
+            setBatter(players.get(rosterCount));
+        }
     }
 
     public void printLineUp(){
@@ -105,17 +112,21 @@ public class Team {
 
     //keeps count of the line up for Players in the line up
     public void increaseLineUp(){
-        if(this.rosterCount < maxPlayers){
+        if(this.rosterCount < players.size()){
             this.rosterCount++;
         }else{
             this.rosterCount=0;
         }
-        setBattingLineUp();
+        setBattingLineUp(rosterCount);
     }
 
     //sets the player that is batting
-    public void batting(Player batting){ this.batting = batting; }
+    public void setBatter(Player batting){ this.batting = batting; }
 
     //getters for batting line up setters
     public Player getBatter(){ return batting; }
+
+    public void printTeamName(){
+        System.out.println("---"+getTeamName()+"---");
+    }
 }

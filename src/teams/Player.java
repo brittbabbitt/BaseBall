@@ -17,15 +17,6 @@ public class Player {
 
     public Player(String name){ this.playerName = name; }
 
-    public String getPlayerName(){
-        return playerName;
-    }
-
-    //if user wishes to set the name of their players
-    public void setPlayerName(String name){ this.playerName = name; }
-
-    public int getPlayerID() { return playerID; }
-
     //randomizes a pitch and returns the type of hit
     //a player gets
     //@return:
@@ -40,13 +31,34 @@ public class Player {
         if(pitch < 70){
             return 0;
         }else if(pitch >= 70 && pitch < 87){
+            printPlayerAction("Single");
             return 1;
         }else if(pitch >= 87 && pitch < 94){
+            printPlayerAction("Double");
             return 2;
         }else if(pitch >= 94 && pitch < 98){
+            printPlayerAction("HOME RUN!!!");
             return 4;
         }else{
+            printPlayerAction("Triple");
             return 3;
         }
     }
+
+    //--print--
+    public void printPlayerAction(String action){
+        System.out.print("Player "+ getPlayerID() +" : " + getPlayerName()+", ");
+        System.out.println("hits a " + action);
+    }
+    //getters and setters
+    //getters: playerName, playerID
+    //setters: playerName
+    public String getPlayerName(){
+        return playerName;
+    }
+
+    //if user wishes to set the name of their players
+    public void setPlayerName(String name){ this.playerName = name; }
+
+    public int getPlayerID() { return playerID; }
 }

@@ -15,16 +15,21 @@ public class Scoreboard {
     public void startGame(Team visitors, Team home){
         while (inning < maxInnings){
             Score scoreblock = new Score();
-            inning++;
+            nextInning();
+            printInningNumber(inning);
 
             //visitors batting
+            visitors.printTeamName();
             int runs = startBattingInning(visitors);
             scoreblock.setVisitorScore(runs);
+            System.out.println("Runs: "+ runs);
             totalVisitors+=runs;
 
             //home batting
+            home.printTeamName();
             runs = startBattingInning(home);
             scoreblock.setHomeScore(runs);
+            System.out.println("Runs: "+ runs);
             addScore(scoreblock);
 
             totalHome+=runs;
@@ -54,10 +59,6 @@ public class Scoreboard {
         this.top = true;
     }
 
-    public void playInning(Team home, Team visitors){
-
-    }
-
     //adding next inning
     public void nextInning() { inning ++; }
 
@@ -65,6 +66,7 @@ public class Scoreboard {
     public void resetInnings() { this.inning = 0; }
 
     //printing
+
     //-inning-
     public void printInningNumber(int i){
         System.out.println("Inning: "+ i);
