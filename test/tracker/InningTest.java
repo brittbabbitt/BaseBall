@@ -24,7 +24,7 @@ public class InningTest {
     }
 
     @Test
-    public void tripple() throws Exception {
+    public void triple() throws Exception {
 
     }
 
@@ -43,7 +43,27 @@ public class InningTest {
     }
 
     @Test
-    public void totalOnBase() throws Exception {
+    public void totalOnBase_basesLoaded() throws Exception {
+        inningTest.advanceRunners(1);
+        inningTest.advanceRunners(1);
+        inningTest.advanceRunners(1);
+        int onBase = inningTest.totalOnBase();
+        assertEquals(3, onBase);
+    }
+    @Test
+    public void totalOnBase_TwoOnBase1_3() throws Exception {
+
+    }
+    @Test
+    public void totalOnBase_TwoOnBase3_1() throws Exception {
+
+    }
+    @Test
+    public void totalOnBase_TwoOnBase1_2() throws Exception {
+
+    }
+    @Test
+    public void totalOnBase_OneOnBase() throws Exception {
 
     }
 
@@ -59,6 +79,18 @@ public class InningTest {
         inningTest.advanceRunners(2); //double
         int i = inningTest.totalOnBase();
         assertNotEquals(2,3);
+    }
+
+    @Test
+    public void advanceRunners_Double() throws Exception {
+        inningTest.advanceRunners(1);
+        inningTest.advanceRunners(2);
+        inningTest.advanceRunners(2);
+        int i = inningTest.totalOnBase();
+
+        assertEquals(2,i);//totalOnBase
+        int runs = inningTest.getRuns();
+        assertEquals(2,runs);
     }
 
 }

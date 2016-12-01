@@ -49,6 +49,38 @@ public class Inning {
         addRuns(bases.size()+1);
         bases.clear();
     }
+    private void checkBasesSize(int runner){
+        if(bases.size() == 2 ){
+            addRun();
+            bases.remove(0);
+        } else if(bases.size() == 1){
+            addRun();
+            bases.remove(0);
+        }
+        bases.add(runner);
+    }
+
+    public void hitDouble(){
+        int onBase = totalOnBase();
+        switch (onBase){
+            case 0 :
+            case 1 : bases.add(2);
+                break;
+            case 2 : checkBasesSize(2);
+            case 3 : checkBasesSize(3);
+        }
+    }
+    public void hitSingle(){
+        int onBase = totalOnBase();
+        switch (onBase){
+            case 0 :
+            case 1 :
+            case 2 : bases.add(1);
+                break;
+            case 3 : addRun();
+                bases.add(1);
+        }
+    }
 
     //advances runners if hit is made and adds runs to the team if granted
     //@param: # of bases to advance runner
@@ -64,27 +96,15 @@ public class Inning {
         if(totalOnBase() != 0){
             if(adv == 3){
                 triple();
-
-                //TODO: refactor double...write test
-            }else if(adv == 2 && totalOnBase() >= 2){
-                if (bases.size() == 1){
-                    addRuns(1);
-                    bases.clear();
-                }else if (bases.size() >= 2){
-                    addRuns(2);
-                    bases.remove(0);
-                    bases.remove(1);
-                }
-                bases.add(adv);
-            }else if(adv == 1 && totalOnBase() == 3) {
-                addRuns(1);
-                bases.remove(0);
-                bases.add(adv);
+            }else if(adv == 2){
+                hitDouble();
+            }else if(adv == 1) {
+                hitSingle();
+            }else if(adv == 4){
+                homeRun();
             }
-        }else if(adv != 4){
-            bases.add(adv);
         }else{
-            homeRun();
+            bases.add(adv);
         }
 
     }
