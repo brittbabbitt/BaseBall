@@ -52,7 +52,10 @@ public class InningTest {
     }
     @Test
     public void totalOnBase_TwoOnBase1_3() throws Exception {
-
+        inningTest.advanceRunners(1);
+        inningTest.advanceRunners(3);
+        int onBase = inningTest.totalOnBase();
+        assertEquals(3, onBase);
     }
     @Test
     public void totalOnBase_TwoOnBase3_1() throws Exception {

@@ -94,14 +94,14 @@ public class Inning {
             return;
         }
         if(totalOnBase() != 0){
-            if(adv == 3){
-                triple();
-            }else if(adv == 2){
-                hitDouble();
-            }else if(adv == 1) {
-                hitSingle();
-            }else if(adv == 4){
-                homeRun();
+            switch(adv){
+                case 1: hitSingle();
+                    break;
+                case 2: hitDouble();
+                    break;
+                case 4: homeRun();
+                    break;
+                case 3: triple();
             }
         }else{
             bases.add(adv);
